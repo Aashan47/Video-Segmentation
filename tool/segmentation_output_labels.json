@@ -1,0 +1,17 @@
+[
+  {
+    "Label": 8,
+    "Name": "vegetation",
+    "Percentage": 53.69
+  },
+  {
+    "Label": 0,
+    "Name": "road",
+    "Percentage": 28.32
+  },
+  {
+    "Label": 2,
+    "Name": "building",
+    "Percentage": 17.99
+  }
+]
