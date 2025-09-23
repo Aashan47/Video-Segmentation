@@ -11,20 +11,13 @@ Transform raw video into segmented output with road, building, and vegetation cl
 - Raw video footage of urban/driving scene
 - No preprocessing required
 
-<video width="640" height="480" controls>
-  <source src="https://github.com/Aashan47/Video-Segmentation/raw/main/basic_input.mp4" type="video/mp4">
-  <a href="https://github.com/Aashan47/Video-Segmentation/raw/main/basic_input.mp4">Download basic_input.mp4</a>
-</video>
 
 **Output**: `output_basic_segmentation.mp4`
 - Segmented video with color-coded regions
 - Road (red), Building (blue), Vegetation (green)
 - Overlay transparency configurable via `--alpha` parameter
 
-<video width="640" height="480" controls>
-  <source src="https://github.com/Aashan47/Video-Segmentation/raw/main/output_basic_segmentation.mp4" type="video/mp4">
-  <a href="https://github.com/Aashan47/Video-Segmentation/raw/main/output_basic_segmentation.mp4">Download output_basic_segmentation.mp4</a>
-</video>
+*[📥 Watch full demo on Youtube: ](https://youtu.be/HwiyFk_XMjw?si=JDJuXN0mMWuF9ran)*
 
 ```bash
 # Basic segmentation demo
@@ -42,21 +35,14 @@ Intelligent processing with motion tracking and spatial revisit detection for op
 - Video with static scenes and camera movement
 - Contains revisited locations and stationary periods
 
-<video width="640" height="480" controls>
-  <source src="https://github.com/Aashan47/Video-Segmentation/raw/main/input_Static.mp4" type="video/mp4">
-  <a href="https://github.com/Aashan47/Video-Segmentation/raw/main/input_Static.mp4">Download input_Static.mp4</a>
-</video>
-
 **Output**: `output-with-scene-detection.mp4`
 - Motion-aware segmentation processing
 - Static scene optimization
 - Revisit detection and handling
 - Enhanced statistics with scene analysis
 
-<video width="640" height="480" controls>
-  <source src="https://github.com/Aashan47/Video-Segmentation/raw/main/output-with-scene-detection.mp4" type="video/mp4">
-  <a href="https://github.com/Aashan47/Video-Segmentation/raw/main/output-with-scene-detection.mp4">Download output-with-scene-detection.mp4</a>
-</video>
+
+*[📥 Watch full demo on Youtube: ](https://youtube.com/shorts/m0hQ2HnS5pw?si=DWhTrLFGiZO5gJ9T)*
 
 ```bash
 # Advanced scene detection demo
@@ -79,28 +65,42 @@ python tool/demo.py \
 - Spatial revisit detection logs and visualization
 - Enhanced CSV/JSON reports with scene analysis data
 
-> **Note**: If videos don't play in your browser/viewer, you can:
-> 1. Click the download links above to view locally
-> 2. Visit the [repository files](https://github.com/Aashan47/Video-Segmentation) directly
-> 3. Clone the repository and open videos with a media player
-
-### Alternative: GIF Previews
-If videos still don't work, consider converting key segments to GIF format:
+### Creating GIF Previews
+To create the GIF previews shown above, use these FFmpeg commands:
 
 ```bash
-# Convert videos to GIF for better compatibility (optional)
-ffmpeg -i basic_input.mp4 -vf "fps=10,scale=640:-1:flags=lanczos" -t 10 basic_input_preview.gif
-ffmpeg -i output_basic_segmentation.mp4 -vf "fps=10,scale=640:-1:flags=lanczos" -t 10 output_preview.gif
+# Create assets directory
+mkdir -p assets
+
+# Method 1: Simple conversion (faster, larger file)
+ffmpeg -i basic_input.mp4 -vf "fps=10,scale=640:-1" -t 10 assets/basic_input_demo.gif
+
+# Method 2: Optimized conversion (smaller file, better quality)
+ffmpeg -i basic_input.mp4 -vf "fps=10,scale=640:-1:flags=lanczos,palettegen" -t 10 assets/palette1.png
+ffmpeg -i basic_input.mp4 -i assets/palette1.png -filter_complex "fps=10,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse" -t 10 assets/basic_input_demo.gif
+
+# Convert all demo videos to GIFs
+ffmpeg -i output_basic_segmentation.mp4 -vf "fps=10,scale=640:-1" -t 10 assets/output_basic_segmentation_demo.gif
+ffmpeg -i input_Static.mp4 -vf "fps=10,scale=640:-1" -t 10 assets/input_static_demo.gif
+ffmpeg -i output-with-scene-detection.mp4 -vf "fps=10,scale=640:-1" -t 10 assets/output_scene_detection_demo.gif
+
+# Clean up palette files (if using Method 2)
+rm assets/palette*.png
 ```
 
-### Video File Structure
+### Repository Structure
 ```
 video-segmentation-main/
-├── basic_input.mp4                    # Input demo video
-├── output_basic_segmentation.mp4      # Basic segmentation result
-├── input_Static.mp4                   # Static scene input video
-├── output-with-scene-detection.mp4    # Advanced processing result
-└── README.md                          # This file
+├── assets/
+│   ├── basic_input_demo.gif                    # Input demo GIF preview
+│   ├── output_basic_segmentation_demo.gif      # Basic segmentation GIF preview
+│   ├── input_static_demo.gif                   # Static scene input GIF preview
+│   └── output_scene_detection_demo.gif         # Advanced processing GIF preview
+├── basic_input.mp4                             # Full input demo video
+├── output_basic_segmentation.mp4               # Full basic segmentation result
+├── input_Static.mp4                            # Full static scene input video
+├── output-with-scene-detection.mp4             # Full advanced processing result
+└── README.md                                   # This file
 ```
 
 ---
@@ -126,7 +126,55 @@ video-segmentation-main/
 ### Prerequisites
 - Python 3.8+
 - CUDA-capable GPU (recommended)
-- FFmpeg (for video processing)
+- FFmpeg (for video processing and GIF creation)
+
+### Installing FFmpeg
+
+#### On Ubuntu/Debian (Azure VM Linux):
+```bash
+# Update package list
+sudo apt update
+
+# Install FFmpeg
+sudo apt install ffmpeg
+
+# Verify installation
+ffmpeg -version
+```
+
+#### On Windows (Azure VM Windows):
+```bash
+# Using Chocolatey (recommended)
+choco install ffmpeg
+
+# Or using winget
+winget install FFmpeg.FFmpeg
+
+# Verify installation
+ffmpeg -version
+```
+
+#### On macOS:
+```bash
+# Using Homebrew
+brew install ffmpeg
+
+# Verify installation
+ffmpeg -version
+```
+
+#### Manual Installation (if package managers don't work):
+1. **Download FFmpeg**:
+   - Visit [https://ffmpeg.org/download.html](https://ffmpeg.org/download.html)
+   - Download the appropriate build for your OS
+
+2. **Extract and add to PATH**:
+   ```bash
+   # Linux/macOS example
+   sudo tar -xf ffmpeg-*.tar.xz -C /usr/local/bin/
+   
+   # Windows: Extract to C:\ffmpeg\ and add C:\ffmpeg\bin to PATH
+   ```
 
 ### Dependencies
 ```bash
