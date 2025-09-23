@@ -11,20 +11,18 @@ Transform raw video into segmented output with road, building, and vegetation cl
 - Raw video footage of urban/driving scene
 - No preprocessing required
 
-<video width="640" height="480" controls>
-  <source src="basic_input.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+> **Note**: If videos don't display below, you can find them in the repository files:
+> - Input: [basic_input.mp4](./basic_input.mp4)
+> - Output: [output_basic_segmentation.mp4](./output_basic_segmentation.mp4)
+
+https://github.com/Aashan47/Video-Segmentation/blob/main/basic_input.mp4
 
 **Output**: `output_basic_segmentation.mp4`
 - Segmented video with color-coded regions
 - Road (red), Building (blue), Vegetation (green)
 - Overlay transparency configurable via `--alpha` parameter
 
-<video width="640" height="480" controls>
-  <source src="output_basic_segmentation.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+https://github.com/Aashan47/Video-Segmentation/blob/main/output_basic_segmentation.mp4
 
 ```bash
 # Basic segmentation demo
@@ -42,10 +40,11 @@ Intelligent processing with motion tracking and spatial revisit detection for op
 - Video with static scenes and camera movement
 - Contains revisited locations and stationary periods
 
-<video width="640" height="480" controls>
-  <source src="input_static.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+> **Note**: If videos don't display below, you can find them in the repository files:
+> - Input: [input_Static.mp4](./input_Static.mp4)
+> - Output: [output-with-scene-detection.mp4](./output-with-scene-detection.mp4)
+
+https://github.com/Aashan47/Video-Segmentation/blob/main/input_Static.mp4
 
 **Output**: `output-with-scene-detection.mp4`
 - Motion-aware segmentation processing
@@ -53,10 +52,7 @@ Intelligent processing with motion tracking and spatial revisit detection for op
 - Revisit detection and handling
 - Enhanced statistics with scene analysis
 
-<video width="640" height="480" controls>
-  <source src="output-with-scene-detection.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+https://github.com/Aashan47/Video-Segmentation/blob/main/output-with-scene-detection.mp4
 
 ```bash
 # Advanced scene detection demo
@@ -78,6 +74,24 @@ python tool/demo.py \
 - More accurate label statistics with motion weighting
 - Spatial revisit detection logs and visualization
 - Enhanced CSV/JSON reports with scene analysis data
+
+### Alternative: Local Video Viewing
+
+If the embedded videos above don't work in your environment, you can view them locally:
+
+1. **Open videos directly**: Navigate to the repository folder and double-click the video files
+2. **Use VLC or media player**: Right-click on video files and open with your preferred media player
+3. **Browser viewing**: Drag and drop the video files into your web browser
+
+### Video File Structure
+```
+video-segmentation-main/
+├── basic_input.mp4                    # Input demo video
+├── output_basic_segmentation.mp4      # Basic segmentation result
+├── input_Static.mp4                   # Static scene input video
+├── output-with-scene-detection.mp4    # Advanced processing result
+└── README.md                          # This file
+```
 
 ---
 
