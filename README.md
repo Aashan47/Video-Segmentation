@@ -11,18 +11,20 @@ Transform raw video into segmented output with road, building, and vegetation cl
 - Raw video footage of urban/driving scene
 - No preprocessing required
 
-> **Note**: If videos don't display below, you can find them in the repository files:
-> - Input: [basic_input.mp4](./basic_input.mp4)
-> - Output: [output_basic_segmentation.mp4](./output_basic_segmentation.mp4)
-
-https://github.com/Aashan47/Video-Segmentation/blob/main/basic_input.mp4
+<video width="640" height="480" controls>
+  <source src="https://github.com/Aashan47/Video-Segmentation/raw/main/basic_input.mp4" type="video/mp4">
+  <a href="https://github.com/Aashan47/Video-Segmentation/raw/main/basic_input.mp4">Download basic_input.mp4</a>
+</video>
 
 **Output**: `output_basic_segmentation.mp4`
 - Segmented video with color-coded regions
 - Road (red), Building (blue), Vegetation (green)
 - Overlay transparency configurable via `--alpha` parameter
 
-https://github.com/Aashan47/Video-Segmentation/blob/main/output_basic_segmentation.mp4
+<video width="640" height="480" controls>
+  <source src="https://github.com/Aashan47/Video-Segmentation/raw/main/output_basic_segmentation.mp4" type="video/mp4">
+  <a href="https://github.com/Aashan47/Video-Segmentation/raw/main/output_basic_segmentation.mp4">Download output_basic_segmentation.mp4</a>
+</video>
 
 ```bash
 # Basic segmentation demo
@@ -40,11 +42,10 @@ Intelligent processing with motion tracking and spatial revisit detection for op
 - Video with static scenes and camera movement
 - Contains revisited locations and stationary periods
 
-> **Note**: If videos don't display below, you can find them in the repository files:
-> - Input: [input_Static.mp4](./input_Static.mp4)
-> - Output: [output-with-scene-detection.mp4](./output-with-scene-detection.mp4)
-
-https://github.com/Aashan47/Video-Segmentation/blob/main/input_Static.mp4
+<video width="640" height="480" controls>
+  <source src="https://github.com/Aashan47/Video-Segmentation/raw/main/input_Static.mp4" type="video/mp4">
+  <a href="https://github.com/Aashan47/Video-Segmentation/raw/main/input_Static.mp4">Download input_Static.mp4</a>
+</video>
 
 **Output**: `output-with-scene-detection.mp4`
 - Motion-aware segmentation processing
@@ -52,7 +53,10 @@ https://github.com/Aashan47/Video-Segmentation/blob/main/input_Static.mp4
 - Revisit detection and handling
 - Enhanced statistics with scene analysis
 
-https://github.com/Aashan47/Video-Segmentation/blob/main/output-with-scene-detection.mp4
+<video width="640" height="480" controls>
+  <source src="https://github.com/Aashan47/Video-Segmentation/raw/main/output-with-scene-detection.mp4" type="video/mp4">
+  <a href="https://github.com/Aashan47/Video-Segmentation/raw/main/output-with-scene-detection.mp4">Download output-with-scene-detection.mp4</a>
+</video>
 
 ```bash
 # Advanced scene detection demo
@@ -75,13 +79,19 @@ python tool/demo.py \
 - Spatial revisit detection logs and visualization
 - Enhanced CSV/JSON reports with scene analysis data
 
-### Alternative: Local Video Viewing
+> **Note**: If videos don't play in your browser/viewer, you can:
+> 1. Click the download links above to view locally
+> 2. Visit the [repository files](https://github.com/Aashan47/Video-Segmentation) directly
+> 3. Clone the repository and open videos with a media player
 
-If the embedded videos above don't work in your environment, you can view them locally:
+### Alternative: GIF Previews
+If videos still don't work, consider converting key segments to GIF format:
 
-1. **Open videos directly**: Navigate to the repository folder and double-click the video files
-2. **Use VLC or media player**: Right-click on video files and open with your preferred media player
-3. **Browser viewing**: Drag and drop the video files into your web browser
+```bash
+# Convert videos to GIF for better compatibility (optional)
+ffmpeg -i basic_input.mp4 -vf "fps=10,scale=640:-1:flags=lanczos" -t 10 basic_input_preview.gif
+ffmpeg -i output_basic_segmentation.mp4 -vf "fps=10,scale=640:-1:flags=lanczos" -t 10 output_preview.gif
+```
 
 ### Video File Structure
 ```
