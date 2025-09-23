@@ -11,10 +11,20 @@ Transform raw video into segmented output with road, building, and vegetation cl
 - Raw video footage of urban/driving scene
 - No preprocessing required
 
+<video width="640" height="480" controls>
+  <source src="basic_input.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 **Output**: `output_basic_segmentation.mp4`
 - Segmented video with color-coded regions
 - Road (red), Building (blue), Vegetation (green)
 - Overlay transparency configurable via `--alpha` parameter
+
+<video width="640" height="480" controls>
+  <source src="output_basic_segmentation.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ```bash
 # Basic segmentation demo
@@ -32,11 +42,21 @@ Intelligent processing with motion tracking and spatial revisit detection for op
 - Video with static scenes and camera movement
 - Contains revisited locations and stationary periods
 
+<video width="640" height="480" controls>
+  <source src="input_static.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 **Output**: `output-with-scene-detection.mp4`
 - Motion-aware segmentation processing
 - Static scene optimization
 - Revisit detection and handling
 - Enhanced statistics with scene analysis
+
+<video width="640" height="480" controls>
+  <source src="output-with-scene-detection.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ```bash
 # Advanced scene detection demo
@@ -332,50 +352,50 @@ python tool/demo.py \
    - Check internet connectivity
    - Verify CUDA compatibility
 
-3. **GroundingDINO Model Loading**
+3. **GroundingDINO Model Loading**t combines multiple state-of-the-art models and techniques. Contributions are welcome in the following areas:
    - Verify HuggingFace access
    - Check configuration file paths
-   - Ensure sufficient disk space
-
-### Performance Issues
+   - Ensure sufficient disk space- Improved motion analysis algorithms
+d spatial tracking methods
+### Performance Issuesions
 - **Slow Processing**: Increase motion_threshold to skip more static frames
 - **High Memory Usage**: Reduce look_ahead_size or grid_size
 - **Poor Detection**: Adjust box_threshold and text_threshold values
 
-## Contributing
-
-This project combines multiple state-of-the-art models and techniques. Contributions are welcome in the following areas:
-
-- Additional object classes and detection prompts
-- Improved motion analysis algorithms
-- Enhanced spatial tracking methods
-- Performance optimizations
-- Additional output formats
+## Contributingf you use this work in your research, please cite the relevant papers:
 
 ## Citation
 
-If you use this work in your research, please cite the relevant papers:
-
-```bibtex
-@article{cotracker2024,
+If you use this work in your research, please cite the relevant papers: Track Together},
+d others},
+```bibtexXiv preprint},
+@article{cotracker2024, year={2024}
   title={CoTracker: It is Better to Track Together},
   author={Karaev, Nikita and others},
-  journal={arXiv preprint},
-  year={2024}
+  journal={arXiv preprint},roundingdino2023,
+  year={2024}  title={Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection},
 }
-
+  journal={arXiv preprint},
 @article{groundingdino2023,
-  title={Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection},
+  title={Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection},}
   author={Liu, Shilong and others},
   journal={arXiv preprint},
   year={2023}
 }
-```
+```This project builds upon multiple open-source components. Please refer to individual component licenses for specific terms.
 
-## License
 
-This project builds upon multiple open-source components. Please refer to individual component licenses for specific terms.
 
+
+
+
+
+
+
+
+
+
+- OpenCV and scikit-image communities for computer vision tools- PSPNet authors for semantic segmentation foundation- GroundingDINO team for object detection framework- CoTracker team for motion tracking capabilities## AcknowledgmentsThis project builds upon multiple open-source components. Please refer to individual component licenses for specific terms.## License
 ## Acknowledgments
 
 - CoTracker team for motion tracking capabilities
