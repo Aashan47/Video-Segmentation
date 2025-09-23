@@ -2,6 +2,65 @@
 
 A comprehensive video segmentation pipeline that combines semantic segmentation with advanced motion tracking, spatial revisit detection, and object detection capabilities. This system is designed to provide intelligent analysis of video content with focus on urban scenes and autonomous driving scenarios.
 
+## Demo
+
+### Raw Video Segmentation
+Transform raw video into segmented output with road, building, and vegetation classification.
+
+**Input**: `basic_input.mp4`
+- Raw video footage of urban/driving scene
+- No preprocessing required
+
+**Output**: `output_basic_segmentation.mp4`
+- Segmented video with color-coded regions
+- Road (red), Building (blue), Vegetation (green)
+- Overlay transparency configurable via `--alpha` parameter
+
+```bash
+# Basic segmentation demo
+python tool/demo.py \
+    --input_video basic_input.mp4 \
+    --video_output_path output_basic_segmentation.mp4 \
+    --config config/cityscapes/cityscapes_pspnet18_sd.yaml \
+    --alpha 0.7
+```
+
+### Advanced Scene Detection
+Intelligent processing with motion tracking and spatial revisit detection for optimized analysis.
+
+**Input**: `input_Static.mp4`
+- Video with static scenes and camera movement
+- Contains revisited locations and stationary periods
+
+**Output**: `output-with-scene-detection.mp4`
+- Motion-aware segmentation processing
+- Static scene optimization
+- Revisit detection and handling
+- Enhanced statistics with scene analysis
+
+```bash
+# Advanced scene detection demo
+python tool/demo.py \
+    --input_video input_Static.mp4 \
+    --video_output_path output-with-scene-detection.mp4 \
+    --config config/cityscapes/cityscapes_pspnet18_sd.yaml \
+    --motion_threshold 0.3 \
+    --static_weight 0.0 \
+    --spatial_tracking \
+    --revisit_threshold 100 \
+    --overlap_threshold 0.3 \
+    --revisit_discount 0.0 \
+    --alpha 0.7
+```
+
+**Key Differences in Advanced Output**:
+- Reduced processing time through static scene detection
+- More accurate label statistics with motion weighting
+- Spatial revisit detection logs and visualization
+- Enhanced CSV/JSON reports with scene analysis data
+
+---
+
 ## Features
 
 ### Core Capabilities
